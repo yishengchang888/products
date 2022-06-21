@@ -1,12 +1,23 @@
+import os #import operating system
+
 #讀取檔案
 products = []
-with open('products.csv', 'r', encoding='utf-8') as f:
-    for line in f:
-        if '商品,價格' in line:      #遇到商品價格就跳到迴圈的下一回
-            continue          #遇到商品價格就跳到迴圈的下一回
-        name, price = line.strip().split(',')
-        products.append([name, price])
-print(products)
+if os.path.isfile('products.csv'):
+    print('檔案存在')
+    with open('products.csv', 'r', encoding='utf-8') as f:
+        for line in f:
+            if '商品,價格' in line:      #遇到商品價格就跳到迴圈的下一回
+                continue          #遇到商品價格就跳到迴圈的下一回
+            name, price = line.strip().split(',')
+            products.append([name, price])
+    print(products)
+else:
+    print('檔案不存在')
+
+
+
+
+
 
 #讓使用者輸入
 while True:
